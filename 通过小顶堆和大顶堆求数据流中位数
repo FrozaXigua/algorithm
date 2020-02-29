@@ -1,3 +1,4 @@
+#判断整个长度的奇偶，奇数时加minheap，偶数加maxheap，如果加了另外一个，要从另外一个里把index在0的数pop出来给过对面。
 import heapq
 class solution:
     def __init__(self):
