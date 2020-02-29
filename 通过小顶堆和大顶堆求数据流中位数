@@ -1,0 +1,35 @@
+import heapq
+class solution:
+    def __init__(self):
+        self.minheap=[]
+        self.maxheap=[]
+    
+    def insert(self,num):
+        if (len(self.minheap)+len(self.maxheap))&1==0:
+            if len(self.maxheap)>0:
+                if num>self.minheap[0]:
+                    heapq.heappush(self.minheap,num)
+                else:
+                    heapq.heappush(self.maxheap,-num)
+                    heapq.heappush(self.minheap,-self.maxheap[0])
+                    heapq.heappop(self.maxheap)
+            else:
+                heapq.heappush(self.minheap,num)
+        else:
+            if len(self.minheap)>0:
+                if -num>self.minheap[0]:
+                    heapq.heappush(self.maxheap,-num)
+                else:
+                    heapq.heappush(self.minheap,num)
+                    heapq.heappush(self.maxheap,-self.minheap[0])
+                    heapq.heappop(self.minheap)
+            else:
+                heapq.heappush(self.maxheap,-num)
+            
+    def check(self):
+        return self.maxheap,self.minheap
+    def getMedian(self):
+        if (len(self.minheap)+len(self.maxheap))&1==0:
+            return (self.minheap[0]-self.maxheap[0])/2
+        else:
+            return self.minheap[0]
