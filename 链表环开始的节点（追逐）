@@ -1,3 +1,6 @@
+#算法思路:设head 到节点开始距离是 a, 环的长度是l，慢节点在相遇前在环里跑了d，快节点跑了2(a+d)，慢节点是a+n*l+d
+#所以a+d=nl, a=nl-d 所以从head跑到环开始处的距离是等于他们相遇的点跑到环开始处的距离。
+
 class ListNode(object):
      def __init__(self, x):
          self.val = x
