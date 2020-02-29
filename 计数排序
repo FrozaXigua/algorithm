@@ -1,0 +1,17 @@
+def counting_sort(K):  
+    result = [0 for i in range(len(K))] 
+    count = [0 for i in range(10)]
+    
+    for i in K:
+        count[i] +=1
+    
+    for i in range(1, len(count)):
+        count[i] = count[i] + count[i-1]
+    
+    for i in K:
+        result[count[i] - 1] = i
+        
+        count[i] = count[i] - 1
+        print(result)
+        print(count)
+    return result
