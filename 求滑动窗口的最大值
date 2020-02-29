@@ -1,0 +1,13 @@
+#始终保持window最左边记录着当前窗口最大值，当有新数据加入时，从右边开始看，只要小于就删除
+def sliding_window(nums,k):
+    result=[]
+    window=[]
+    for index,value in enumerate(nums):
+        if index>=k and window[0]<=index-k:
+            window.pop(0)
+        while window and nums[window[-1]]<=value:
+            window.pop()
+        window.append(index)
+        if index+1>=k:
+            result.append(nums[window[0]])
+    return result
