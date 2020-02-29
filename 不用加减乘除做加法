@@ -1,0 +1,8 @@
+#关注好进位就行
+def plus(a,b):
+    while b!=0:
+        sums=a^b
+        plus=(a&b)<<1
+        a=sums
+        b=plus
+    return a
